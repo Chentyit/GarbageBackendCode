@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iweb.mapper.SysUserMapper">
+    <resultMap id="sysUserBaseMap" type="SysUser">
+        <id column="user_id" property="userId" javaType="Integer"/>
+        <result column="user_name" property="username" javaType="String"/>
+        <result column="user_password" property="password" javaType="String"/>
+    </resultMap>
+
+    <!-- 通过完整用户名查询用户（不支持使用模糊查询） -->
+    <select id="findUserByUserName" resultMap="sysUserBaseMap">
+        select *
+        from sysuser as u
+        where u.user_name = #{username}
+    </select>
+
+    <!-- 注册用户 -->
+    <insert id="registeredUser">
+        insert into sysuser (user_name, user_password)
+        values (#{username}, #{password})
+    </insert>
+
+    <!-- 根据用户名和密码查找唯一用户 -->
+    <select id="findUserByNameAndPassword" resultMap="sysUserBaseMap">
+        select *
+        from sysuser as u
+        where u.user_name = #{username} and u.user_password = #{password}
+    </select>
+
+    <!-- 修改用户名或者密码 -->
+    <update id="modifyUserNameOrPassword">
+        update sysuser as u
+        <set>
+            <if test="newName != null">
+                u.user_name = #{newName},
+            </if>
+            <if test="newPassword != null">
+                u.user_password = #{newPassword}
+            </if>
+        </set>
+        where u.user_id = #{userId} and u.user_name = #{username}
+    </update>
+</mapper>

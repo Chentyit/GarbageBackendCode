@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iweb.mapper.GarbageMapper">
+    <resultMap id="garbageBaseMap" type="Garbage">
+        <id column="garbage_id" property="gId" javaType="Integer"/>
+        <result column="garbage_name" property="gName" javaType="String"/>
+        <result column="garbage_class_id" property="gClassId" javaType="Integer"/>
+    </resultMap>
+
+    <sql id="selectAllInfo">
+        select *
+        from garbage_class as gc
+    </sql>
+
+    <!-- 查询出所有的的垃圾 -->
+    <select id="findAllGarbage" resultMap="garbageBaseMap">
+        <include refid="selectAllInfo"></include>
+        where gc.garbage_class_id != 0
+    </select>
+
+    <!-- 查询出所有的的垃圾类别 -->
+    <select id="findAllGarClass" resultMap="garbageBaseMap">
+        <include refid="selectAllInfo"></include>
+        where gc.garbage_class_id = 0
+    </select>
+
+    <!-- 根据类别 ID 查询出归属于这个分类下的垃圾 -->
+    <select id="findGarByClassId" resultMap="garbageBaseMap">
+        <include refid="selectAllInfo"></include>
+        where gc.garbage_class_id = #{classId}
+    </select>
+
+    <!-- 通过垃圾类别 ID 查询出类别名称 -->
+    <select id="findGarClassNameByClassId" parameterType="Integer" resultType="String">
+        select gc.garbage_name
+        from garbage_class as gc
+        where gc.garbage_id = #{classId}
+    </select>
+
+    <!-- 通过模糊查询 查出相关的垃圾 -->
+    <select id="findGarByGarName" resultMap="garbageBaseMap">
+        <include refid="selectAllInfo"></include>
+        where gc.garbage_name like concat(concat('%', #{garName}), '%')
+    </select>
+
+    <!-- 添加垃圾名称，当搜索的垃圾不存在时自动添加（分类暂时归于未分类） -->
+    <insert id="addGarbage">
+        insert into garbage_class (garbage_name)
+        values (#{garName})
+    </insert>
+</mapper>

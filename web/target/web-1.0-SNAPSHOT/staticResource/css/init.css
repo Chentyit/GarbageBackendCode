@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: "微软雅黑", serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+input {
+    outline: none;
+}
+
+.clearfix:after {
+    content: '.';
+    height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: rgba(225, 225, 225, 0.5);
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: rgba(225, 225, 225, 0.5);
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: rgba(225, 225, 225, 0.5);
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(225, 225, 225, 0.5);
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgba(225, 225, 225, 0.5);
+}

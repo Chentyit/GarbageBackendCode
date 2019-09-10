@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!-- 延迟加载启动（懒加载） 默认为 false 不开启 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 积极加载 默认为 true 设置为 false 按需加载 -->
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
+
+    <typeAliases>
+        <package name="com.iweb.pojo"/>
+    </typeAliases>
+</configuration>

@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #2ecc71;
+}
+
+.search-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #2f3640;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+}
+
+.search-btn {
+    width: 40px;
+    height: 40px;
+    color: #2ecc71;
+    float: right;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    text-decoration: none;
+}
+
+.search-txt {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    width: 240px;
+    padding: 0 6px;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+}
+
+.point {
+    width: 40px;
+    height: 80px;
+    position: fixed;
+    bottom: 50px;
+    right: 25px;
+}
+
+.point .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.point .menu li {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: rgba(255, 255, 255, 0.5) solid 1px;
+    border-radius: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.point .menu li img {
+    width: 100%;
+    height: 100%;
+}
+
+.point .menu li p {
+    width: 100px;
+    height: 40px;
+    display: block;
+    background-color: rgba(0, 0, 0, 0);
+    position: relative;
+    right: 120px;
+    top: -40px;
+    color: #2ecc71;
+    font-weight: bolder;
+    text-align: center;
+    line-height: 40px;
+    border: rgba(0, 0, 0, 0) solid 1px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.point .menu li:hover p {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+}

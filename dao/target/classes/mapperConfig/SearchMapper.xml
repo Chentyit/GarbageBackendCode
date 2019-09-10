@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iweb.mapper.SearchMapper">
+    <resultMap id="searchBaseMap" type="Search">
+        <id column="search_id" property="searchId" javaType="Integer"/>
+        <result column="garbage_name" property="garbageName" javaType="String"/>
+        <result column="search_number" property="searchNum" javaType="Integer"/>
+    </resultMap>
+
+    <!-- 搜索记录列表里面没有记录过该垃圾 -->
+    <select id="findRecordByGarName" resultMap="searchBaseMap">
+        select *
+        from search_table as st
+        where st.garbage_name = #{garName}
+    </select>
+
+    <!-- 向数据库中添加该垃圾名称 -->
+    <insert id="addSearchName">
+        insert into search_table (garbage_name)
+        values (#{garName})
+    </insert>
+
+    <!-- 搜索记录次数加一 -->
+    <update id="incSearchNum">
+        update search_table as st
+        set search_number = search_number + 1
+        where st.garbage_name = #{garName}
+    </update>
+
+    <select id="selectSearchOrderBySearchNum" resultMap="searchBaseMap">
+        select *
+        from search_table as st
+        order by st.search_number desc
+    </select>
+</mapper>

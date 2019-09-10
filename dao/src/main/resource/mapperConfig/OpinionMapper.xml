@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iweb.mapper.OpinionMapper">
+    <resultMap id="opinionBaseMap" type="Opinion">
+        <id column="opinion_id" property="opId" javaType="Integer"/>
+        <result column="opinion_date" property="opDate" javaType="String"/>
+        <result column="opinion_address" property="opAddress" javaType="String"/>
+        <result column="opinion_content" property="opContent" javaType="String"/>
+    </resultMap>
+
+    <!-- 添加意见 -->
+    <insert id="insertOpinion" parameterType="Opinion">
+        insert into opinion (opinion_date, opinion_address, opinion_content)
+        values (#{opinion.opDate}, #{opinion.opAddress}, #{opinion.opContent})
+    </insert>
+
+    <!-- 根据 ID 查询意见 -->
+    <select id="findOpinionById" parameterType="Integer" resultMap="opinionBaseMap">
+        select *
+        from opinion as op
+        where op.opinion_id = #{opId}
+    </select>
+
+    <!-- 根据 ID 删除意见 -->
+    <delete id="deleteOpinionById" parameterType="Integer">
+        delete from opinion
+        where opinion_id = #{opId}
+    </delete>
+</mapper>

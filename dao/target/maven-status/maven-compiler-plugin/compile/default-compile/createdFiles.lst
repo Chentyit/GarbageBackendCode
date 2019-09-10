@@ -1,0 +1,3 @@
+com\iweb\mapper\SearchMapper.class
+com\iweb\mapper\GarbageMapper.class
+com\iweb\mapper\SysUserMapper.class
