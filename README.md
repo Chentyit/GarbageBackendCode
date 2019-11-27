@@ -6,7 +6,7 @@
 
 基础框架：Spring + SpringMVC + MyBatis
 
-图像识别：百度 AI 图像识别接口（可以直接使用我的，也可以自己去申请，替换掉对应的 APP_ID，API_KEY，和 SECRET_KEY，替换位置为 com.iweb.common.ai.AiImageIdentification）
+图像识别：百度 AI 图像识别接口（可以直接使用我的，也可以自己去申请，替换掉对应的 APP_ID，API_KEY，和 SECRET_KEY）
 
 ![AiImageIdentification](./mkimge/AiImageIdentification.png)
 
